@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="card">
+        <h2>Загрузить фотографию</h2>
+        <form action="/upload" method="post" enctype="multipart/form-data" class="upload-form">
+            <div class="form-group">
+                <input type="file" name="file" id="fileInput" accept="image/*" class="form-control" required>
+            </div>
+            <button type="submit" class="btn">Обнаружить</button>
+        </form>
+    </div>
+
+    <div class="card">
+        <h2>Загрузить видео</h2>
+        <form id="videoForm" action="/upload_video" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <input type="file" name="file" id="videoInput" accept="video/*" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-secondary">Обнаружить</button>
+        </form>
+        <div id="videoStatus"></div>
+        <div id="videoResults" class="detection-result"></div>
+    </div>
+
+    <div class="card">
+        <h2>Камера реального времени</h2>
+        <div class="video-container">
+            <img src="{{ url_for('video_feed') }}" class="video-feed" alt="Live Camera Feed">
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Отчеты</h2>
+        <a href="/report" class="btn">Скачать отчет из БД</a>
+    </div>
+{% endblock %}

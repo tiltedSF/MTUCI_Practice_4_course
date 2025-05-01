@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="card">
+        <h2>Результат обнаружения</h2>
+        
+        <div class="detection-result">
+            <img src="{{ url_for('static', filename=img_path) }}" class="detection-image" alt="Detection Result">
+            
+            <h3>Обнаруженные животные ({{ detections|length }}):</h3>
+            {% for detection in detections %}
+            <div class="detection-item">
+                <h4>{{ detection.class|capitalize }}</h4>
+                <p><strong>Confidence:</strong> {{ "%.2f"|format(detection.confidence * 100) }}%</p>
+                <p><strong>Bounding Box:</strong> {{ detection.bbox }}</p>
+            </div>
+            {% endfor %}
+        </div>
+
+        <a href="/" class="btn">Назад</a>
+    </div>
+{% endblock %}

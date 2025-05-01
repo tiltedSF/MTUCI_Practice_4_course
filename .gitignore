@@ -1,0 +1,6 @@
+__pycache__/
+app/static/results/
+app/static/uploads/
+app/static/temp/
+app/static/reports/
+venv/
